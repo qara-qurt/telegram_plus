@@ -1,0 +1,85 @@
+syntax = "proto3";
+
+package user;
+
+import "google/protobuf/timestamp.proto";
+option go_package = "user_service/pkg/gen/user";
+
+service UserService {
+  rpc CreateUser (CreateUserRequest) returns (CreateUserResponse);
+  rpc GetUser (GetUserRequest) returns (User);
+  rpc GetUsers (GetUsersRequests) returns (GetUsersResponse);
+  rpc GetUsersByCredential (GetUsersByCredentialRequests) returns (GetUsersByCredentialResponse);
+  rpc DeleteUser (DeleteUserRequest) returns (Empty);
+  rpc UpdateUser (UpdateUserRequest) returns (User);
+}
+
+// CREATE USER
+message CreateUserRequest{
+  string username = 1;
+  string login = 2;
+  google.protobuf.Timestamp birthday_date = 3;
+  string email = 4;
+  string password = 5;
+}
+
+message CreateUserResponse{
+  string uuid = 1;
+}
+
+
+// GET USER
+message GetUserRequest{
+  string uuid = 1;
+}
+
+
+// GET USERS
+message GetUsersRequests {
+  int32 page = 1;
+  int32 limit = 2;
+}
+
+message GetUsersResponse {
+  repeated User users = 1;
+}
+
+// GET USERS BY CREDENTIALS
+message GetUsersByCredentialRequests {
+  string text = 1;
+}
+
+message GetUsersByCredentialResponse{
+  repeated User users = 1;
+}
+
+// DELETE USER
+message DeleteUserRequest{
+  string uuid = 1;
+}
+
+
+// UPDATE USER
+message UpdateUserRequest{
+  optional string login = 1;
+  optional string username = 2;
+  optional string status = 3;
+  google.protobuf.Timestamp birthday_date = 4;
+  optional string img = 5;
+}
+
+
+// USER
+message User {
+  string uuid = 1;
+  string username = 2;
+  string login = 3;
+  google.protobuf.Timestamp birthday_date = 4;
+  string email = 5;
+  optional string status = 6;
+  optional string img = 7;
+  google.protobuf.Timestamp created_at = 8;
+  google.protobuf.Timestamp updated_at = 9;
+}
+
+message Empty{}

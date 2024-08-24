@@ -65,6 +65,7 @@ func NewDatabasePSQL(conf *configs.Database) (*DatabasePSQL, error) {
 	err = connPool.Ping(context.Background())
 	if err != nil {
 		logrus.Error("Could not ping database")
+		return nil, err
 	}
 
 	logrus.Info("Connected to the database!!")

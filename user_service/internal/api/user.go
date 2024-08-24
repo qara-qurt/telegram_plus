@@ -25,7 +25,6 @@ func New(service service.IUser) *Implementation {
 
 // ### Create User
 func (i *Implementation) CreateUser(ctx context.Context, in *desk.CreateUserRequest) (*desk.CreateUserResponse, error) {
-
 	if in.Username == "" && len(in.Username) <= 2 {
 		return nil, status.Errorf(codes.InvalidArgument, "Missing required field - username")
 	}

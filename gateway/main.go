@@ -11,7 +11,7 @@ import (
 
 var (
 	PORT_ADDR = ":3000"
-	GPRC_ADDR = "localhost:8080"
+	GPRC_ADDR = "user_service:8080"
 )
 
 func main() {
@@ -19,8 +19,6 @@ func main() {
 	if err != nil {
 		log.Fatalf("failed to connect to gRPC server: %v", err)
 	}
-	defer conn.Close()
-
 	user_service := pb.NewUserServiceClient(conn)
 
 	e := echo.New()

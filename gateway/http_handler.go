@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/labstack/echo/v4"
-	pb "github.com/qara-qurt/telegrum_plus/user_service/pkg/gen/user"
+	pb "github.com/qara-qurt/telegram_plus/user_service/pkg/gen/user"
 )
 
 type handler struct {
@@ -29,7 +29,7 @@ func (h *handler) Ping(c echo.Context) error {
 func (h *handler) GetUsers(c echo.Context) error {
 	users, err := h.user_service.GetUsers(context.Background(), &pb.GetUsersRequests{
 		Page:  1,
-		Limit: 10,	
+		Limit: 10,
 	})
 	if err != nil {
 		return c.String(500, err.Error())

@@ -5,11 +5,11 @@ import (
 	"fmt"
 	"net"
 
-	user "github.com/qara-qurt/telegrum_plus/user_service/internal/api"
-	configs "github.com/qara-qurt/telegrum_plus/user_service/internal/config"
-	"github.com/qara-qurt/telegrum_plus/user_service/internal/repository"
-	"github.com/qara-qurt/telegrum_plus/user_service/internal/service"
-	desk "github.com/qara-qurt/telegrum_plus/user_service/pkg/gen/user"
+	user "github.com/qara-qurt/telegram_plus/user_service/internal/api"
+	configs "github.com/qara-qurt/telegram_plus/user_service/internal/config"
+	"github.com/qara-qurt/telegram_plus/user_service/internal/repository"
+	"github.com/qara-qurt/telegram_plus/user_service/internal/service"
+	desk "github.com/qara-qurt/telegram_plus/user_service/pkg/gen/user"
 
 	"github.com/sirupsen/logrus"
 	"google.golang.org/grpc"

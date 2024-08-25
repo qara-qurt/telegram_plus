@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"regexp"
 
-	"github.com/qara-qurt/telegrum_plus/user_service/internal/converter"
-	"github.com/qara-qurt/telegrum_plus/user_service/internal/service"
-	desk "github.com/qara-qurt/telegrum_plus/user_service/pkg/gen/user"
+	"github.com/qara-qurt/telegram_plus/user_service/internal/converter"
+	"github.com/qara-qurt/telegram_plus/user_service/internal/service"
+	desk "github.com/qara-qurt/telegram_plus/user_service/pkg/gen/user"
 
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"

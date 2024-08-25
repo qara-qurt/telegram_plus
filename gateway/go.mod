@@ -1,4 +1,4 @@
-module github.com/qara-qurt/telegrum_plus/gateway
+module github.com/qara-qurt/telegram_plus/gateway
 
 go 1.23.0
 

@@ -4,7 +4,7 @@ import (
 	"log"
 
 	"github.com/labstack/echo/v4"
-	pb "github.com/qara-qurt/telegrum_plus/user_service/pkg/gen/user"
+	pb "github.com/qara-qurt/telegram_plus/user_service/pkg/gen/user"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )

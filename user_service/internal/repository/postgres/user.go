@@ -3,7 +3,8 @@ package postgres
 import (
 	"context"
 	"fmt"
-	"user_service/internal/model"
+
+	"github.com/qara-qurt/telegrum_plus/user_service/internal/model"
 
 	"github.com/jackc/pgx"
 	"github.com/jackc/pgx/v5/pgxpool"

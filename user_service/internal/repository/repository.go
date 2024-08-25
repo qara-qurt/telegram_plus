@@ -1,9 +1,9 @@
 package repository
 
 import (
-	configs "user_service/internal/config"
-	"user_service/internal/model"
-	"user_service/internal/repository/postgres"
+	configs "github.com/qara-qurt/telegrum_plus/user_service/internal/config"
+	"github.com/qara-qurt/telegrum_plus/user_service/internal/model"
+	"github.com/qara-qurt/telegrum_plus/user_service/internal/repository/postgres"
 )
 
 type IUserRepository interface {

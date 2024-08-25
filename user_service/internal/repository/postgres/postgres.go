@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"log"
 	"time"
-	configs "user_service/internal/config"
+	configs "github.com/qara-qurt/telegrum_plus/user_service/internal/config"
 
 	"github.com/jackc/pgx/v5/pgxpool"
 	_ "github.com/lib/pq"

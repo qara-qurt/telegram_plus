@@ -1,4 +1,4 @@
-module user_service
+module github.com/qara-qurt/telegrum_plus/user_service
 
 go 1.21
 

@@ -4,11 +4,12 @@ import (
 	"context"
 	"fmt"
 	"net"
-	user "user_service/internal/api"
-	configs "user_service/internal/config"
-	"user_service/internal/repository"
-	"user_service/internal/service"
-	desk "user_service/pkg/gen/user"
+
+	user "github.com/qara-qurt/telegrum_plus/user_service/internal/api"
+	configs "github.com/qara-qurt/telegrum_plus/user_service/internal/config"
+	"github.com/qara-qurt/telegrum_plus/user_service/internal/repository"
+	"github.com/qara-qurt/telegrum_plus/user_service/internal/service"
+	desk "github.com/qara-qurt/telegrum_plus/user_service/pkg/gen/user"
 
 	"github.com/sirupsen/logrus"
 	"google.golang.org/grpc"

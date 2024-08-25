@@ -2,7 +2,8 @@ package main
 
 import (
 	"context"
-	app2 "user_service/internal/app"
+
+	app2 "github.com/qara-qurt/telegrum_plus/user_service/internal/app"
 
 	"github.com/sirupsen/logrus"
 )

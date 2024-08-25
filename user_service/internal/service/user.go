@@ -1,8 +1,8 @@
 package service
 
 import (
-	"user_service/internal/model"
-	"user_service/internal/repository"
+	"github.com/qara-qurt/telegrum_plus/user_service/internal/model"
+	"github.com/qara-qurt/telegrum_plus/user_service/internal/repository"
 
 	"golang.org/x/crypto/bcrypt"
 )

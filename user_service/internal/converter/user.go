@@ -2,8 +2,9 @@ package converter
 
 import (
 	"time"
-	"user_service/internal/model"
-	desk "user_service/pkg/gen/user"
+
+	"github.com/qara-qurt/telegrum_plus/user_service/internal/model"
+	desk "github.com/qara-qurt/telegrum_plus/user_service/pkg/gen/user"
 
 	"google.golang.org/protobuf/types/known/timestamppb"
 )

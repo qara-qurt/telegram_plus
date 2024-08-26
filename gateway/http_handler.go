@@ -20,7 +20,7 @@ func NewHandler(client pb.UserServiceClient) *handler {
 func (h *handler) InitRoutes(http *echo.Echo) {
 	http.GET("/ping", h.Ping)
 	http.GET("/users", h.GetUsers)
-	http.GET("/tetst", h.Test)
+	http.GET("/test", h.Test)
 }
 
 func (h *handler) Ping(c echo.Context) error {
@@ -28,7 +28,7 @@ func (h *handler) Ping(c echo.Context) error {
 }
 
 func (h *handler) Test(c echo.Context) error {
-	return c.String(200, "TEST")
+	return c.String(200, "TEST TEST")
 }
 
 func (h *handler) GetUsers(c echo.Context) error {

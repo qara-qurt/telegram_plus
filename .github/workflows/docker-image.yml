@@ -10,7 +10,8 @@ on:
 
 jobs:
   build-and-push:
-    runs-on: self-hosted # Использовать self-hosted runner
+    runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -44,11 +45,11 @@ jobs:
 
   deploy:
     needs: build-and-push
-    runs-on: self-hosted # Использовать self-hosted runner
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Install SSH Client
         run: sudo apt-get install -y openssh-client
@@ -61,8 +62,8 @@ jobs:
           echo "$SSH_PRIVATE_KEY" > private_key.pem
           chmod 600 private_key.pem
           ssh -o StrictHostKeyChecking=no -i private_key.pem ubuntu@$EC2_PUBLIC_IP << EOF
-            sudo docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+            docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
             cd /home/ubuntu/telegram_plus
-            sudo docker-compose pull
-            sudo docker-compose up -d
+            docker-compose pull
+            docker-compose up -d
           EOF

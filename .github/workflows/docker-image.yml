@@ -59,6 +59,10 @@ jobs:
           printf "%s" "${{ secrets.SSH_PRIVATE_KEY }}" > private_key.pem
           chmod 600 private_key.pem
           ssh -o StrictHostKeyChecking=no -i private_key.pem ubuntu@$EC2_PUBLIC_IP << EOF
+            # Navigate to the project directory
+            cd /home/ubuntu/telegram_plus
+            git pull origin main
+
             # Log in to Docker Hub
             docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
@@ -66,7 +70,7 @@ jobs:
             docker-compose -f docker-compose.prod.yml pull
 
             # Recreate and start the containers with the new images
-            docker-compose -f docker-compose.prod.yml up -d --remove-orphans
+            docker-compose -f docker-compose.prod.yml up -d
 
             # Clean up old images and unused containers
             docker system prune -f

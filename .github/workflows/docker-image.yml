@@ -10,8 +10,7 @@ on:
 
 jobs:
   build-and-push:
-    runs-on: ubuntu-latest
-
+    runs-on: self-hosted # Использовать self-hosted runner
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -42,20 +41,28 @@ jobs:
           push: true
           tags: |
             qaraqurt/telegram_plus:gateway-latest
-    prepare-environment:
-      runs-on: self-hosted
-      needs: test
-      steps:
-        - name: Stop and remove containers, networks
-          run: docker-compose down
-        - name: Remove unused data
-          run: docker system prune -a -f
 
-    deploy:
-    runs-on: self-hosted # Запускаем на раннере, который настроили до этого.
-    needs: prepare-environment # Запускаем только если джоба prepare-environment прошла успешно
+  deploy:
+    needs: build-and-push
+    runs-on: self-hosted # Использовать self-hosted runner
+
     steps:
-      - name: checkout repo
+      - name: Checkout code
         uses: actions/checkout@v4
-      - name: docker-compose
-        run: docker-compose up -d
+
+      - name: Install SSH Client
+        run: sudo apt-get install -y openssh-client
+
+      - name: Deploy to EC2
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          EC2_PUBLIC_IP: ${{ secrets.EC2_PUBLIC_IP }}
+        run: |
+          echo "$SSH_PRIVATE_KEY" > private_key.pem
+          chmod 600 private_key.pem
+          ssh -o StrictHostKeyChecking=no -i private_key.pem ubuntu@$EC2_PUBLIC_IP << EOF
+            sudo docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+            cd /home/ubuntu/telegram_plus
+            sudo docker-compose pull
+            sudo docker-compose up -d
+          EOF

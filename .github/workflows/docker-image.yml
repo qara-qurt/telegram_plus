@@ -61,6 +61,7 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i private_key.pem ubuntu@$EC2_PUBLIC_IP << EOF
             # Navigate to the project directory
             cd /home/ubuntu/telegram_plus
+            git pull origin main
 
             # Log in to Docker Hub
             docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}

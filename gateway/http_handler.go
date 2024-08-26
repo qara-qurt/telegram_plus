@@ -23,7 +23,7 @@ func (h *handler) InitRoutes(http *echo.Echo) {
 }
 
 func (h *handler) Ping(c echo.Context) error {
-	return c.String(200, "pong")
+	return c.String(200, "pong gang shit")
 }
 
 func (h *handler) GetUsers(c echo.Context) error {

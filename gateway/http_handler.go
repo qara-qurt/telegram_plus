@@ -26,6 +26,7 @@ func (h *handler) Ping(c echo.Context) error {
 	return c.String(200, "pong")
 }
 
+// GET Users
 func (h *handler) GetUsers(c echo.Context) error {
 	users, err := h.user_service.GetUsers(context.Background(), &pb.GetUsersRequests{
 		Page:  1,

@@ -63,7 +63,7 @@ jobs:
           chmod 600 private_key.pem
           ssh -o StrictHostKeyChecking=no -i private_key.pem ubuntu@$EC2_PUBLIC_IP << EOF
             docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-            cd /path/to/your/project
+            cd /telegram_plus
             docker-compose pull
             docker-compose up -d
           EOF

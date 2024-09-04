@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package post;
+
+import "google/protobuf/timestamp.proto";
+option go_package = "post_service/pkg/gen/post";
+
+service PostService {
+  rpc GetPosts (GetPostRequest) returns (GetPostsResponse);
+}
+
+// REQUEST POSTS BY USER_ID
+message GetPostRequest{
+  string user_id = 1;
+}
+
+// GET POSTS RESPONSE
+message GetPostsResponse{
+  repeated Post posts = 1;
+}
+
+
+// POST
+message Post {
+  string uuid = 1;
+  string user_id = 2;
+  string content = 3;
+  optional string img = 4;
+  google.protobuf.Timestamp created_at = 5;
+  google.protobuf.Timestamp updated_at = 6;
+}
+
